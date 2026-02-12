@@ -1,63 +1,85 @@
 # Trader Performance vs Market Sentiment Analysis
 
 ## Objective
-Analyze how Bitcoin market sentiment (Fear/Greed) influences trader behavior and performance on Hyperliquid.
+
+Analyze how Bitcoin market sentiment (Fear vs Greed) influences trader behavior and performance on Hyperliquid, and identify actionable strategy insights based on regime conditions.
 
 ---
 
 ## Methodology
 
-### 1. Data Preparation
-- Standardized column names and handled missing values.
-- Converted timestamps to daily granularity.
-- Merged trade records with daily sentiment classification.
-- Engineered trader-level daily metrics:
+### Data Preparation
+- Standardized column names and cleaned missing values.
+- Converted trade timestamps to daily granularity.
+- Merged trade data with daily Fear/Greed sentiment classification.
+- Engineered daily trader-level metrics:
   - Daily realized PnL
   - Win rate
   - Number of trades per day
   - Average trade size
-  - Trader volatility (PnL standard deviation)
+  - Trader volatility (standard deviation of daily PnL)
 
-### 2. Analytical Approach
-- Compared trader performance across Fear vs Greed regimes.
+### Analytical Approach
+- Compared trader performance across Fear and Greed regimes.
 - Evaluated behavioral shifts in trade frequency and win rate.
 - Segmented traders into:
-  - High vs Low activity
+  - High vs Low activity groups
   - Consistent vs Volatile traders
-- Measured regime sensitivity across segments.
-
-### 3. Bonus – Predictive Modeling
-- Built a Random Forest classifier to predict daily trader profitability using sentiment and behavioral features.
-- Evaluated using train/test split and feature importance analysis.
+- Assessed how different trader segments respond to sentiment regimes.
 
 ---
 
 ## Key Insights
 
-1. Performance is Regime-Dependent  
-Trader profitability differs across sentiment regimes. Greed periods show stronger average returns but also higher volatility, indicating increased risk exposure during bullish sentiment.
+1. **Performance is Regime-Dependent**  
+   Trader profitability differs across sentiment regimes. Greed periods tend to show stronger average returns but also higher variability, indicating increased risk exposure during bullish sentiment phases.
 
-2. Behavioral Expansion During Greed  
-Trade frequency increases during Greed regimes, while win rate does not improve proportionally. This suggests potential overconfidence-driven trading behavior.
+2. **Behavioral Expansion During Greed**  
+   Traders increase activity during Greed regimes. However, win rate improvements are not proportional to the increase in trading frequency, suggesting possible overconfidence-driven trading behavior.
 
-3. Segment Sensitivity to Sentiment  
-High-activity and volatile traders exhibit larger downside impact during Fear regimes compared to low-activity or consistent traders. Aggressive trading styles amplify regime risk.
+3. **Segment Sensitivity to Sentiment**  
+   High-activity and volatile traders exhibit greater downside exposure during Fear regimes compared to low-activity or consistent traders. Aggressive trading styles amplify regime-based risk.
+
+Overall, market sentiment acts as a regime filter that influences both trader behavior and risk-adjusted performance.
 
 ---
 
 ## Strategy Recommendations
 
 ### Strategy 1 – Sentiment-Based Risk Moderation
-During Fear regimes, reduce exposure for high-activity traders through leverage control or trade frequency limits.  
+During Fear regimes, reduce exposure for high-activity traders through trade frequency limits or leverage moderation.  
 Rationale: This segment demonstrates elevated downside volatility under negative sentiment conditions.
 
 ### Strategy 2 – Overtrading Control During Greed
-Implement a cap on daily trade frequency during Greed regimes.  
-Rationale: Increased activity does not proportionally improve win rate and may increase variance drag.
+Implement trade frequency caps during Greed regimes to prevent excessive variance without proportional improvement in win rate.  
+Rationale: Increased activity does not consistently translate into improved profitability.
+
+These strategies can be implemented as a regime-based risk overlay in execution systems.
 
 ---
 
 ## Bonus – Predictive Model
 
 A Random Forest classifier was trained to predict daily trader profitability using sentiment and behavioral features.  
-The model demonstrates measurable predictive capability, with behavioral metrics contributing more predictive power than sentiment classification alone.
+
+Results indicate limited but measurable predictive capability. Feature importance analysis shows that behavioral metrics such as trade frequency and win rate contribute more predictive signal than sentiment classification alone.
+
+This suggests that trader behavior carries meaningful predictive information beyond sentiment regime indicators.
+
+---
+
+## Repository Structure
+
+- `Data_Scientiest.ipynb` – Full analysis notebook
+- `README.md` – Project summary and findings
+
+---
+
+## Tools Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
