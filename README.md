@@ -1,6 +1,4 @@
 # M.Bhuvaneshwar-Reddy
-Primetrade.ai
-
 Trader Performance vs Market Sentiment Analysis  
 Methodology  
 
